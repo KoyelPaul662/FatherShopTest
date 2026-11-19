@@ -11,6 +11,8 @@ class CategoryController extends Controller
     public function index()
     {
         try {
+            // Added withoutVerifying() only for local development to bypass SSL certificate errors. Not required in production.
+
             $response = Http::withoutVerifying()->get('https://fatherstock-cache.b-cdn.net/category/hot-category.json');
 
             if (!$response->successful()) {
@@ -32,6 +34,8 @@ class CategoryController extends Controller
     public function products($id)
     {
         try {
+            // Added withoutVerifying() only for local development to bypass SSL certificate errors. Not required in production.
+
             $response = Http::withoutVerifying()->get(
                 "https://fatherstock-cache.b-cdn.net/category/{$id}.json"
             );
@@ -61,6 +65,8 @@ class CategoryController extends Controller
     public function productDetails($id)
     {
         try {
+            // Added withoutVerifying() only for local development to bypass SSL certificate errors. Not required in production.
+
             $response = Http::withoutVerifying()->get("https://fatherstock-cache.b-cdn.net/cache/{$id}-f1.json");
 
             if (!$response->successful()) {
